@@ -1,0 +1,96 @@
+
+
+@media only screen and (max-width:992px)
+{
+    .about_page-content h2{
+        font-size: 1.5rem;
+    }
+}
+@media only screen and (max-width:786px) {
+    .about_page-img{
+    /* display: none; */
+    }
+}
+@media only screen and (max-width:390px){
+    .about_section{
+        margin-top: -150px ;
+    }
+    .about_section-item p{
+        font-size: 1rem;
+    }
+    .become_driver-btn{
+        width: 100%;
+    }
+    .common_section{
+        width: 123% !important;
+    }
+    .main_navbar{
+        width: 123% !important;
+    }
+    .about_page-img{
+        width: 123% !important;
+    }
+    .section_title{
+        width: 100%;
+    }
+    .section_description{
+        width: 100%;
+    
+    }
+    .become_driver{
+        width: 123% !important;
+    }
+    .single_member{
+        width: 126%;
+        
+    }
+    .footer{
+        width: 123% !important;
+    }
+}
+
+@media only screen and (max-width:375px){
+    .about_section{
+        margin-top: 90px !important;
+    }
+}
+
+@media only screen and (max-width:414px){
+    .about_page-img{
+        width: 120%;
+    }
+    .about_section{
+        margin-top: -150px;
+    }
+    .common_section{
+        width: 116%;
+    }
+    .main_navbar{
+        width: 116%;
+    }
+    .section_title{
+        width: 100%;
+    }
+    .about_page-section{
+        width: 100%;
+    }
+    button{
+        width: 100%;
+    }
+    .become_driver-btn{
+        width: 100%;
+    }
+    .become_driver{
+        width: 115.5%;
+    }
+    .single_member{
+        width: 144%;
+    }
+    .footer{
+        width: 116.5%;
+    }
+   .list_group{
+    width: 100%;
+   }
+}
+

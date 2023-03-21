@@ -1,0 +1,113 @@
+#conformpage .maindiv{
+    display: flex;
+    justify-content: center;
+    /* margin-left: 220px !important; */
+    /* flex-direction: column; */
+    /* padding: 10px !important;   */
+    margin-top: 36px;
+    /* height: 100vh; */
+    margin-bottom: 24px !important;
+}
+#conformpage .profile_outsidebox{
+    padding: 10px;
+    background-color: #000c6b1a;
+    border-radius: 5px;
+    width: 50%;
+
+}
+#conformpage .profile_box{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+
+    border-radius: 25px;
+    padding: 20px;
+}
+#conformpage .profile_nav{
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    background: #000c6b1a;
+    border-radius: 25px;
+    height: 80px;
+}
+#conformpage .div_proimg{
+    margin-left: 30px;
+}
+#conformpage .proimg{
+    height: 80px;
+    width: 80px;
+
+}
+#conformpage .profile_nav h2{
+    /* position: relative;
+    top: 10px;
+    left: 50px; */
+    /* font-weight: 600; */
+    margin-bottom: 0% !important;
+}
+#conformpage .prodetails{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+#conformpage .paymentdetails{
+    margin-left: 20px;
+}
+#conformpage .samepad{
+    padding: 10px;
+    font-size: 20px;
+    text-transform: capitalize;
+    /* color: black; */
+}
+#conformpage .samepademail{
+    padding: 10px;
+    font-size: 20px;
+    /* color: black; */
+}
+ 
+#conformpage .textque{
+    color: #000d6b;
+    font-weight: 600;
+}
+#conformpage .textans{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000c6b93;
+    font-weight: 600;
+}
+#conformpage .bookinconfirm{
+    margin-top: 10px;
+}
+#conformpage .textcenter{
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: #000d6b;
+    color: aliceblue;
+    border: none;
+    padding: 8px 0px;
+    cursor: pointer;
+}
+
+#conformpage .cancel{
+    background-color: #000c6b33;
+    color: #000d6b;
+    font-weight: 600;
+    font-size: 18px;
+    /* border: 2px solid #000c6b8a; */
+}
+#conformpage .confirm{
+    background-color: #000c6b76;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+#conformpage .otherdetails{
+    height: 50px;
+    overflow-x: hidden; 
+    overflow-y: scroll; 
+}
+
+

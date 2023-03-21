@@ -1,0 +1,18 @@
+.main_div{
+    /* display: flex; */
+    margin-left: 220px !important;
+    /* flex-direction: column; */
+    padding: 10px; 
+}
+.t{
+    border: 2px solid black !important;
+}
+.heder{
+    display: flex;
+    margin-top: 64px !important;
+    justify-content: center;
+    color: #f9a826;
+}
+.name1{
+    text-transform: capitalize;
+}

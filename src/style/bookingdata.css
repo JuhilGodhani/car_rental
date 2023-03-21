@@ -1,0 +1,135 @@
+.modal-backdrop {
+    --bs-backdrop-bg: #00000053 !important;
+}
+.del{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* display: inline-block; */
+    font-size: 20px;
+    padding: 5px;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    color: red;
+}
+.del:hover{
+    border-radius: 5px;
+    color: white;
+    background-color: rgba(255, 0, 0, 0.582);
+
+}
+.edit{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    padding: 5px;
+    cursor: pointer;
+    color: rgba(0, 128, 255);
+
+}
+.edit:hover{
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(0, 128, 255,0.582);
+}
+.updatemodalfooter{
+    border-top: none !important;
+    border-bottom: none !important;
+}
+.updatebtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    background-color: rgb(0, 159, 5);
+    border: 2px solid rgb(0, 159, 5);
+    padding: 5px;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+.updatebtn:hover{
+    color: rgb(0, 159, 5);
+    background-color: rgba(255, 255, 255);
+}
+.abtn{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 50px;
+    margin-top: -50px;
+}
+.addicon{
+    font-size: 50px;
+}
+.addbtn{
+    display: flex;
+    justify-content: center;
+    /* justify-content: flex-end; */
+    align-items: center;
+    width: 70px;
+    height: 40px;
+    /* margin-left: 300px; */
+    margin-bottom: 10px;
+    margin-top: 5px;
+    font-size: 20px;
+    padding: 5px;
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    /* border: 2px solid rgba(0, 128, 255); */
+    background-color: rgba(0, 128, 255);
+    border: 2.5px solid rgba(0, 128, 255);
+}
+.addbtn:hover{
+    /* color: rgba(0, 128, 255); */
+    color: rgba(0, 128, 255);
+    background-color: white;
+    border: 2.5px solid rgba(0, 128, 255);
+}
+.adddata{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    background-color: rgba(0, 128, 255);
+    border: 2px solid rgba(0, 128, 255);
+    padding: 5px;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+.adddata:hover{
+    color: rgba(0, 128, 255);
+    background-color: rgba(255, 255, 255);
+}
+.labelsty{
+    padding-left: 10px !important;
+}
+.table>:not(caption)>*>*{
+    text-align: center ;
+    justify-content: center;
+    align-items: center;
+}
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+    --bs-table-accent-bg: #000c6b1a !important;
+    color: var(--bs-table-striped-color);
+}
+.table-striped>tbody>tr:nth-of-type(even)>* {
+    --bs-table-accent-bg: #000c6b41 !important;
+    color: var(--bs-table-striped-color);
+}
+td{
+    border-right: 2px solid white !important;
+    border-bottom: 2px solid white !important;
+    border-left: 2px solid white !important;
+}
+th{
+    border-right: 2px solid black !important;
+    border-bottom: 2px solid black !important;
+}

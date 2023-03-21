@@ -1,0 +1,101 @@
+body
+{
+   
+    background-image: url();
+   
+}
+
+.form_container{
+    width: 50%;
+    justify-content: center;
+    margin: auto;
+    background-color: rgba(241, 228, 228, 0.419);
+   
+  padding: 10px;
+  border-radius: 20px;
+  background-image: url();
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-shadow: rgba(1, 1, 1, 0.50) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  /* border: 5px solid coral; */
+  animation: mymove 5s infinite;
+  border: 5px solid #000b6d;
+  
+  
+}
+
+
+
+.form{
+    background-color: rgba(241, 228, 228, 0.419);
+    border-radius: 10px;
+    background-image: url();
+    
+
+   
+    
+}
+
+.genderlist{
+    padding: 0 10px 0 10px;
+    background-color: #fff;
+    /* border-radius: 105px !important; */
+
+}
+.genderlist li{
+    padding-left: 10px;
+}
+.genderlist li:hover{
+    background-color: #aeb9fa88;
+}
+.text{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.button{
+    margin-left: 275px;
+    margin-top: 20px;
+   height: 50px;
+   width: 150px;
+   background-color: #000d6b;
+   color: #fff;
+   border-radius: 10px;
+}
+.button1{
+    width: 165px;
+}
+.button a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.button a:hover{
+    text-decoration: none;
+    color: #fff;
+}
+.option{
+    margin-left: 30px; 
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.Input{
+   color: grey;
+}
+
+.signinlink{
+    cursor: pointer;
+    color: #3f51b5 !important;
+}
+
+.box{
+    background-color: #fff;
+}
+.box1{
+    background-color: rgba(241, 248, 255, 0.9);
+}
+
+@keyframes mymove {
+    50% {border-color: lightblue;}
+  }

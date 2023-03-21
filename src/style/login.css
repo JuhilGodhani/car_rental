@@ -1,0 +1,47 @@
+.adminpage{
+    margin-top: 74px !important;
+}
+.login_button{
+    margin-left: 275px;
+    margin-top: 15px;
+   height: 50px;
+   width: 150px;
+   background-color: #000d6b;
+   color: #fff;
+   border-radius: 10px;
+}
+.a_lgbtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+.a_lgbtn:hover{
+    color: #fff;
+}
+.lwg{
+    padding: 20px !important;
+}
+.signuplink{
+    cursor: pointer;
+    color: #3f51b5 !important;
+}
+.MuiTypography-body1{
+    font-size: 15px !important;
+    margin-left: -5px !important;
+}
+.MuiSvgIcon-root{
+    width: 20px !important;
+    height: 20px !important;
+}
+.box{
+    background-color: #fff;
+}
+.box1{
+    background-color: rgba(241, 248, 255, 0.9);
+}
+.googlebtn{
+    
+    border-radius: 5px !important;
+    width: 250px !important;
+}

@@ -1,0 +1,244 @@
+.find_cars-left {
+    background: linear-gradient(rgb(249, 168, 38, 0.9), rgb(249, 168, 38, 0.9)), url("../assests/all-images/toyota-offer-2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 92px 35px;
+    /* margin-left: -13px; */
+
+
+}
+
+
+.form_car-left h2 {
+    font-weight: 600;
+    font-size: 2.8rem;
+
+}
+
+
+.form_group {
+    width: 30%;
+    margin-bottom: 0;
+}
+
+.form_group input {
+    border: 1px solid #7cba972a;
+    padding: 8px 12px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+}
+
+.form_group input::placeholder {
+    color: #7c8a97;
+}
+
+.form {
+    margin-top: 4.3px;
+    background: #fff;
+    padding-top: 55px;
+    padding-bottom: 50px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.select_group {
+    width: 30%;
+}
+
+.select_group select {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #7cba972a;
+    outline: none;
+    color: #7c8a97;
+    border-radius: 5px;
+
+}
+
+.hero_slider-section {
+    position: relative;
+    z-index: 10;
+    margin-bottom: 100px;
+}
+
+.hero_form {
+    position: absolute;
+    bottom: -300px;
+    z-index: 11;
+    width: 100%;
+    /* background-color: rgba(241, 228, 228, 0.419); */
+    overflow: hidden;
+
+}
+
+.form_row {
+    background: #fff;
+    box-shadow: 5px 5px 15px -5px #7c8a97;
+    background-color: rgba(241, 228, 228, 0.419)
+
+}
+
+.journey_time::before {
+    content: "journey time";
+    margin-right: 0.8rem;
+    color: #7c8a97;
+}
+
+.find_car-btn {
+    background: #000d6b;
+    color: #fff;
+    padding: 8px 15px;
+    width: 100%;
+    border: none;
+    outline: none;
+}
+.find_car-btn{
+    border-radius: 5px;
+}
+.find_car-btn:hover {
+    background-color: #80c0fb;
+    color: rgb(49, 22, 22);
+    box-shadow: 5px 5px 15px -5px #7c8a97;
+}
+
+.formhelpertxt1{
+    color: #ffffff00 !important;
+    margin-left: 10px !important;
+}
+
+@media only screen and (max-width:992px) {
+    .find_cars-left {
+        padding: 65px 22px;
+        /* padding-top: -50px !important; */
+    }
+
+    .find_cars-left h2 {
+        font-size: 1.5rem;
+    }
+
+    .form {
+        padding: 30px 10px;
+    }
+
+    .form_group input,
+    .select_group select {
+        padding: 7px 10px;
+        font-size: 0.8rem;
+    }
+
+    .hero_form{
+        bottom: -100px;
+    }
+
+}
+@media only screen and (max-width:768px){
+    .find_cars-left{
+        padding-top: 20px;
+        padding-bottom: 0;
+        background: #fff;
+        text-align: center;
+    }
+    .form{
+        padding: 20px 10px;
+    }
+}
+
+@media only screen and (max-width:576px){
+    .form_group{
+        width: 100%;
+        margin: auto;
+        margin-bottom: 15px;
+    }
+
+    .form_group input{
+        font-size: 0.7rem !important;
+    }
+    .select_group{
+        width: 100%;
+        padding-right: 10px;
+        font-size: 0.7rem;
+    }
+    .find_car-btn{
+        font-size: 0.8rem;
+    }
+    .find_car-left h2{
+        font-size: 1rem;
+    }
+    .hero_form{
+        bottom: -250px;
+       
+    }
+}
+@media only screen and (width:390px){
+    .form{
+        width: 100% !important;
+       
+    }
+    button{
+        width: 100% !important;
+    }
+    .hero_form{
+        width: 112% !important;
+        bottom: 120px !important;
+    }
+    
+    .find_car-btn
+    {
+        width: 106%;
+    }
+    .form_group{
+        width: 106%;
+    }
+    .form_group input{
+       width: 106% !important;
+    }
+    .hero_form{
+        bottom: -80px ;
+       
+    }
+    .select{
+        width: 106% !important;
+    }
+   .find_car-left{
+    width: 106% !important;
+   }
+}
+
+@media only screen and (width:375px){
+    button{
+        width: 100% !important;
+    }
+    .form{
+        width: 100% !important;
+    }
+    .hero_form{
+        width: 112%;
+        bottom: -50px !important;
+     
+       
+    }
+  
+}
+
+@media only screen and (max-width:414px){
+    .hero_form{
+        width: 112%;
+        /* margin-bottom: -200px; */
+        bottom: 180px;
+    }
+    button{
+        width: 100% !important;
+    }
+    .form{
+        width: 100% !important;
+    }
+}
+
+@media only screen and (width:393px){
+    .hero_form{
+      bottom:120px  ;
+    
+    }
+}

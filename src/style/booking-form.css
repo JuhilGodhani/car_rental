@@ -1,0 +1,120 @@
+.booking_form {
+    width: 47.5%;
+
+}
+
+.i1{
+    padding-right: 5px;
+}
+.booking_form input {
+    padding: 8px 15px;
+    border: 1px solid #7c8a972a;
+    color: #7c8a97;
+    width: 100%;
+}
+
+.booking_form select,
+.textarea {
+    width: 100%;
+    padding: 10px 15px;
+    color: #7c8a97;
+    border: 1px solid #7c8a972a;
+    border-radius: 4px;
+}
+.t1{
+    margin-left: 10px;
+}
+.sele1{
+    padding-left: 30px !important;
+    text-transform: capitalize;
+}
+.t1{
+    text-transform: capitalize;
+}
+.t2{
+    text-transform: uppercase;
+}
+.time_picker::before {
+    content: "journey Time";
+    color: #7c8a97;
+    margin-right: 0.5rem;
+}
+
+.textarea:focus,
+.booking_form input:focus,
+.booking_form select:focus {
+    outline: none;
+}
+.privet{
+    margin-top: 15px;
+}
+.policy{
+    color: #000d6b;
+    font-weight: 600;
+    text-align: justify;
+}
+.checkbox{
+    margin-right: 5px;
+    height: 15px;
+    width: 15px;
+}
+.readmore{
+    display: flex;
+    justify-content: flex-end;
+    color: #000d6b;
+    font-weight: 600;
+    cursor: pointer;
+}
+.readmore:hover{
+    color: rgb(249, 168, 38);
+
+
+}
+
+.modalbody{
+    padding: 25px !important;
+}
+.titles{
+    font-size: 24px;
+}
+.policytxt{
+    display: flex;
+    text-align: justify;
+}
+.acceptbtn{
+    padding: 10px;
+    background-color: #000d6b;
+    padding: 10px 80px;
+    font-size: 18px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.emailbox{
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #b5b5b595;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    appearance: none;
+    border-radius: 0.375rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.formhelpertxt{
+    margin-left: 10px !important;
+}
+
+@media only screen and (max-width:768px) {
+    .booking_form{
+        width: 100%;
+    }
+    .booking_form input,.textarea,.booking_form select{
+        font-size: 0.8rem;
+    }
+}

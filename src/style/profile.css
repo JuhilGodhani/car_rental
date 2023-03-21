@@ -1,0 +1,41 @@
+
+#profile .sidebar_box{
+    display: flex;
+    justify-content: center;
+    background-color: #000c6b21;
+    width: 250px;
+    height: 100%;
+    border-right: 4px solid #000c6b18;
+}
+
+#profile .profile_ul{
+
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
+    width: 240px;
+
+
+}
+
+#profile .profile_ul li {
+    padding: 10px;
+    color: #000c6b;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+#profile .profile_ul  .li1{
+    color: #000c6b;
+    background-color: #000c6b18;
+    margin-left: 10px;
+
+}
+#profile .profile_ul .li2{
+    margin-top: 10px;
+}
+

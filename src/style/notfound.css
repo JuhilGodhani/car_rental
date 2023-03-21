@@ -1,0 +1,10 @@
+.text{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 0px !important;
+    color: #000d6b;
+}
+.adminpage{
+    margin-top: 74px !important;
+}

@@ -1,0 +1,131 @@
+/* ---------------google fonts------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
+
+
+/* base style */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:'Source Sans Pro', sans-serif;
+  margin-bottom: 0;
+}
+
+/* pre- define css */
+h1,h2,h3,h4,h5,h6{
+  color: #000d6b;
+  font-weight: 600;
+}
+
+h3,h4{
+  font-size: 1.8rem;
+
+}
+
+h5,h6{
+  font-size: 1.2rem;
+}
+a{
+  text-decoration: none;
+  color: unset;
+}
+
+a:hover{
+  color: unset;
+}
+ul{
+  margin: 0;
+  list-style: none;
+}
+
+.section_title
+{
+  color: #000d6b;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.section_subtitle{
+  color: #f9a826;
+  font-weight: 600;
+  font-size: 1.2rem;
+
+}
+
+.section_description{
+  color: #7c8a97;
+  font-size: .9rem;
+  line-height: 30px;
+}
+section{
+  padding: 50px 0px;
+}
+
+.btn{
+  padding: 7px 15px;
+  background:#000d6b ;
+  color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  transition: .3s;
+}
+
+.btn:hover{
+  color: #fff;
+  background: #000c6bd0;
+}
+
+/* <-- conformpage.css--> */
+.swal-icon--success__ring {
+  border: 4px solid hsla(98,55%,69%) !important;
+}
+.swal-overlay .swal-modal .swal-footer{
+  display: flex !important;
+  justify-content: center !important;
+}
+.swal-button{
+  background-color: #000d6b !important;
+}
+.swal-text{
+  color: black !important;
+}
+.swal-title{
+  color: black !important;
+}
+/* <-- conformpage.css--> */
+input[type="date"],
+input[type="time"] {
+  cursor: pointer;
+  position: relative;
+}
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  background: transparent;
+  bottom: 0;
+  color: transparent;
+  cursor: pointer;
+  height: auto;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: auto;
+}
+
+@media screen and (max-width:768px) {
+  section{
+    padding: 30px 0px;
+  }
+
+  .section_title{
+    font-size: 1.6rem;
+  }
+
+  .section_subtitle{
+    font-size: 1.1rem;
+  }
+}
+
+
