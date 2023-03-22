@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Layout from "./components/Layout/Layout";
 // import AdminLayout from "./components/Layout/AdminLayout";
 // import Home from "./pages/Home";
-import { Elements } from "@stripe/react-stripe-js";
+import { Elements }from "@stripe/react-stripe-js";
 import { loadStripe }from "@stripe/stripe-js";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 const PUBLIC_KEY =
