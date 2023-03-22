@@ -40,7 +40,7 @@ const FindCarForm = () => {
       })
     );
     navigate("/cars");
-    console.log(localStorage.getItem("Journey-Details"));
+    // console.log(localStorage.getItem("Journey-Details"));
   };
 
   const today = new Date();
@@ -143,14 +143,14 @@ const FindCarForm = () => {
             value={userfindData.cartype}
           >
             <option value="" disabled>
-              Select AC&Non-AC
+              Car Type
             </option>
-            <option value="AC Car">AC car</option>
-            <option value="Non-AC Car">Non-AC car</option>
+            <option value="Sedan">Sedan</option>
+            <option value="SUV">SUV</option>
+            <option value="Coupe">Coupe</option>
+            <option value="PickupTrucks">Pickup Trucks</option>
           </select>
-          <FormHelperText className="formhelpertxt1">
-            AC or Non-AC
-          </FormHelperText>
+          <FormHelperText className="formhelpertxt1">Car Type</FormHelperText>
         </FormGroup>
 
         <FormGroup className="form_group">

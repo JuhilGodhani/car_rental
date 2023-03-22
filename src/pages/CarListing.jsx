@@ -26,6 +26,7 @@ import {
 const CarListing = () => {
   const [usersele, setUsersele] = useState("");
   const [Cardata, setCardata] = useState([]);
+  const [cars, setcars] = useState([]);
   const [Arr, setArr] = useState(CarData);
 
   const handleSele = (event) => {
@@ -38,15 +39,55 @@ const CarListing = () => {
   console.log("usersele", usersele);
   const Search = (e) => {
     e.preventDefault();
-    if (usersele === "AC Car") {
-      setArr(ACcarData);
-      localStorage.setItem("AC&Non-AC", "AC Car");
-    } else {
-      setArr(CarData);
-      localStorage.setItem("AC&Non-AC", "Non-AC Car");
+    if (usersele === "Sedan") {
+      // setArr(ACcarData);
+      // setCardata(Arr);
+
+      // console.log("Cardata :>> ", Cardata);
+
+      const Sedancars = Cardata.filter((row) => {
+        if (row.data.cartype === "Sedan") {
+          return row;
+          // console.log("cars", row);
+        }
+      });
+      // localStorage.setItem("cartype", "Sedan");
+      setcars(Sedancars);
+    } else if (usersele === "SUV") {
+      const SUVcars = Cardata.filter((row) => {
+        if (row.data.cartype === "SUV") {
+          return row;
+          // console.log("cars", row);
+        }
+      });
+      // setCardata(Arr);
+      // localStorage.setItem("cartype", "SUV");
+      setcars(SUVcars);
+    } else if (usersele === "Coupe") {
+      const Coupecars = Cardata.filter((row) => {
+        if (row.data.cartype === "Coupe") {
+          return row;
+          // console.log("cars", row);
+        }
+      });
+      // setCardata(Arr);
+      // localStorage.setItem("cartype", "Coupe");
+      setcars(Coupecars);
+    } else if (usersele === "PickupTrucks") {
+      const PickupTruckscars = Cardata.filter((row) => {
+        if (row.data.cartype === "Pickup Trucks") {
+          return row;
+          // console.log("cars", row);
+        }
+      });
+      // setCardata(Arr);
+      // localStorage.setItem("cartype", "PickupTrucks");
+      setcars(PickupTruckscars);
     }
   };
+
   let a = JSON.parse(localStorage.getItem("Journey-Details"));
+
   useEffect(() => {
     const dbRef = ref(dbs, "cardata");
     onValue(dbRef, (snapshot) => {
@@ -57,18 +98,25 @@ const CarListing = () => {
         records.push({ key: keyName, data: data });
       });
       setCardata(records);
+      setcars(records);
     });
 
-    if (a.cartype === "Non-AC Car") {
-      localStorage.setItem("AC&Non-AC", a.cartype);
+    if (a.cartype === "Sedan") {
       // console.log("a.cartype :>> ", a.cartype);
-      setUsersele(a.cartype);
-      setArr(CarData);
+      setUsersele("Sedan");
+      const Sedancars = Cardata.filter((row) => {
+        if (row.data.cartype === a.cartype) {
+          return row;
+          // console.log("cars", row);
+        }
+      });
+      setcars(Sedancars);
+      // localStorage.setItem("cartype", a.cartype);
     } else {
-      localStorage.setItem("AC&Non-AC", "AC Car");
-      setUsersele(a.cartype);
+      // localStorage.setItem("cartype", "AC Car");
+      setUsersele("SUV");
       // setUsersele("AC Car");
-      setArr(ACcarData);
+      // setArr(ACcarData);
     }
     // setUsersele(a.cartype);/
     // setArr(ACcarData);
@@ -93,12 +141,14 @@ const CarListing = () => {
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={usersele}
-                    label="AC or Non-AC"
-                    name="ACNonAc"
+                    label="Car Type"
+                    name="cartype"
                     onChange={handleSele}
                   >
-                    <MenuItem value="AC Car">AC Car</MenuItem>
-                    <MenuItem value="Non-AC Car">Non-AC Car</MenuItem>
+                    <MenuItem value="Sedan">Sedan</MenuItem>
+                    <MenuItem value="SUV">SUV</MenuItem>
+                    <MenuItem value="Coupe">Coupe</MenuItem>
+                    <MenuItem value="PickupTrucks">Pickup Trucks</MenuItem>
                   </TextValidator>
                   {/* <FormControl
                     sx={{ m: 1, width: 300 }}
@@ -160,7 +210,7 @@ const CarListing = () => {
               </div>
             </Col>
 
-            {Cardata.map((item) => (
+            {cars.map((item) => (
               <CarItem item={item} key={item.key} />
             ))}
           </Row>
