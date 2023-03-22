@@ -3,7 +3,7 @@ import Layout from "./components/Layout/Layout";
 // import AdminLayout from "./components/Layout/AdminLayout";
 // import Home from "./pages/Home";
 import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
+import { loadStripe }from "@stripe/stripe-js";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 const PUBLIC_KEY =
   "pk_test_51Mjya5SHUioN0kDXuWnRh4ecHV5YyyMOePIrDrftVmP8WPp7bklex8TdF6OqgBhBBgrpWsykawfnsuvypc4BYb0d00noS2PS04";
