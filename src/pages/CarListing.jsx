@@ -39,12 +39,9 @@ const CarListing = () => {
   console.log("usersele", usersele);
   const Search = (e) => {
     e.preventDefault();
+    console.log('row :>>  ', Cardata);
     if (usersele === "Sedan") {
-      // setArr(ACcarData);
-      // setCardata(Arr);
-
-      // console.log("Cardata :>> ", Cardata);
-
+     
       const Sedancars = Cardata.filter((row) => {
         if (row.data.cartype === "Sedan") {
           return row;
@@ -56,13 +53,13 @@ const CarListing = () => {
     } else if (usersele === "SUV") {
       const SUVcars = Cardata.filter((row) => {
         if (row.data.cartype === "SUV") {
-          return row;
-          // console.log("cars", row);
+         return row; 
         }
       });
-      // setCardata(Arr);
-      // localStorage.setItem("cartype", "SUV");
       setcars(SUVcars);
+    } else if (usersele === "SelectCars") {
+      console.log(' selectcar:>> ',CarData );
+        setcars(Cardata)
     } else if (usersele === "Coupe") {
       const Coupecars = Cardata.filter((row) => {
         if (row.data.cartype === "Coupe") {
@@ -75,7 +72,7 @@ const CarListing = () => {
       setcars(Coupecars);
     } else if (usersele === "PickupTrucks") {
       const PickupTruckscars = Cardata.filter((row) => {
-        if (row.data.cartype === "Pickup Trucks") {
+        if (row.data.cartype === "PickupTrucks") {
           return row;
           // console.log("cars", row);
         }
@@ -145,6 +142,7 @@ const CarListing = () => {
                     name="cartype"
                     onChange={handleSele}
                   >
+                    <MenuItem value="SelectCars">All Cars</MenuItem>
                     <MenuItem value="Sedan">Sedan</MenuItem>
                     <MenuItem value="SUV">SUV</MenuItem>
                     <MenuItem value="Coupe">Coupe</MenuItem>
