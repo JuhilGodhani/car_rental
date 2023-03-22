@@ -75,7 +75,7 @@ const CarListing = () => {
       setcars(Coupecars);
     } else if (usersele === "PickupTrucks") {
       const PickupTruckscars = Cardata.filter((row) => {
-        if (row.data.cartype === "Pickup Trucks") {
+        if (row.data.cartype === "PickupTrucks") {
           return row;
           // console.log("cars", row);
         }
@@ -83,6 +83,8 @@ const CarListing = () => {
       // setCardata(Arr);
       // localStorage.setItem("cartype", "PickupTrucks");
       setcars(PickupTruckscars);
+    } else if (usersele === "AllCar") {
+      setcars(Cardata);
     }
   };
 
@@ -99,25 +101,54 @@ const CarListing = () => {
       });
       setCardata(records);
       setcars(records);
+      if (a.cartype === "Sedan") {
+        // console.log("a.cartype :>> ", a.cartype);
+        // console.log("a.cartype :>> ", a.cartype);
+        const Sedancars = records.filter((row) => {
+          if (row.data.cartype === a.cartype) {
+            return row;
+            // console.log("cars", row);
+          }
+        });
+        setUsersele(a.cartype);
+        setcars(Sedancars);
+        // localStorage.setItem("cartype", a.cartype);
+      } else if (a.cartype === "SUV") {
+        // localStorage.setItem("cartype", "AC Car");
+        const Sedancars = records.filter((row) => {
+          if (row.data.cartype === a.cartype) {
+            return row;
+            // console.log("cars", row);
+          }
+        });
+        // setUsersele("SUV");
+        setUsersele(a.cartype);
+        setcars(Sedancars);
+      } else if (a.cartype === "Coupe") {
+        // localStorage.setItem("cartype", "AC Car");
+        const Sedancars = records.filter((row) => {
+          if (row.data.cartype === a.cartype) {
+            return row;
+            // console.log("cars", row);
+          }
+        });
+        // setUsersele("SUV");
+        setUsersele(a.cartype);
+        setcars(Sedancars);
+      } else if (a.cartype === "PickupTrucks") {
+        // localStorage.setItem("cartype", "AC Car");
+        const Sedancars = records.filter((row) => {
+          if (row.data.cartype === a.cartype) {
+            return row;
+            // console.log("cars", row);
+          }
+        });
+        // setUsersele("SUV");
+        setUsersele(a.cartype);
+        setcars(Sedancars);
+      }
     });
 
-    if (a.cartype === "Sedan") {
-      // console.log("a.cartype :>> ", a.cartype);
-      setUsersele("Sedan");
-      const Sedancars = Cardata.filter((row) => {
-        if (row.data.cartype === a.cartype) {
-          return row;
-          // console.log("cars", row);
-        }
-      });
-      setcars(Sedancars);
-      // localStorage.setItem("cartype", a.cartype);
-    } else {
-      // localStorage.setItem("cartype", "AC Car");
-      setUsersele("SUV");
-      // setUsersele("AC Car");
-      // setArr(ACcarData);
-    }
     // setUsersele(a.cartype);/
     // setArr(ACcarData);
   }, []);
@@ -145,6 +176,7 @@ const CarListing = () => {
                     name="cartype"
                     onChange={handleSele}
                   >
+                    <MenuItem value="AllCar">All Car</MenuItem>
                     <MenuItem value="Sedan">Sedan</MenuItem>
                     <MenuItem value="SUV">SUV</MenuItem>
                     <MenuItem value="Coupe">Coupe</MenuItem>
