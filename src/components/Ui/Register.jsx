@@ -11,6 +11,8 @@ import {
   remove,
   child,
 } from "firebase/database";
+import { v4 } from "uuid";
+import { storage } from "../userfirebase/userfirebase";
 import { dbs } from "../userfirebase/userfirebase";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
@@ -55,6 +57,8 @@ const Register = (props) => {
         firstname: userRegidata.firstname,
         lastname: userRegidata.lastname,
         email: userRegidata.email,
+        userimg:
+          "https://firebasestorage.googleapis.com/v0/b/car-rent-website-7fa0c.appspot.com/o/images%2Fytrf.jpge27a91c1-e62f-49e1-aa7a-845adc7dec91?alt=media&token=62900931-ab9e-4db3-8d75-229857425c70",
         phonenumber: userRegidata.phonenumber,
         password: userRegidata.password,
         gender: userRegidata.gender,
@@ -106,6 +110,8 @@ const Register = (props) => {
     // setRegidata(data);
 
     //==========================================================================
+
+    //================================================================================================
 
     const registerWithEmailAndPassword = async (email, password) => {
       try {
@@ -271,6 +277,8 @@ const Register = (props) => {
                 label="Gender"
                 name="gender"
                 onChange={handleRegidata}
+                validators={["required"]}
+                errorMessages={["This field is required"]}
               >
                 <MenuItem value="Male">Male</MenuItem>
                 <MenuItem value="Female">Female</MenuItem>

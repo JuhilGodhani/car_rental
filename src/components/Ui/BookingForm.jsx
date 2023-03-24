@@ -363,13 +363,16 @@ const BookingForm = () => {
 
     // setRandom(random)
     const shortId = shortid.generate();
-    const random = Math.floor(Math.random() * 100) + 1;
+    const random = Math.floor(Math.random() * 100000) + 1;
     // setRandom(random);
     localStorage.setItem("randomnumber", random);
     console.log("shortId :>> ", shortId);
     console.log("random :>> ", random);
     const randomId = uuidv4();
     console.log("randomID :>> ", randomId);
+
+    const Random = localStorage.getItem("randomnumber");
+    setRandom(Random);
 
     localStorage.setItem(
       "userBookingdata",
@@ -461,8 +464,8 @@ const BookingForm = () => {
 
   useEffect(() => {
     // console.log("calculate :>> ", totalprice);
-    const Random = localStorage.getItem("randomnumber");
-    setRandom(Random);
+    // const Random = localStorage.getItem("randomnumber");
+    // setRandom(Random);
     const userBookingdata1 = JSON.parse(
       localStorage.getItem("userBookingdata")
     );
@@ -678,7 +681,11 @@ const BookingForm = () => {
                         className="textarea"
                         name="msg"
                         onChange={postBookingData}
-                        value={userBookingdata?.msg}
+                        value={
+                          userBookingdata?.msg.length > 50
+                            ? userBookingdata?.msg.substring(0, 50)
+                            : userBookingdata?.msg
+                        }
                         // required
                         placeholder="Other Details"
                       ></Input>

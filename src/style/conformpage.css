@@ -105,9 +105,11 @@
 }
 
 #conformpage .otherdetails{
+    padding: 10px !important;
     height: 50px;
     overflow-x: hidden; 
     overflow-y: scroll; 
 }
+
 
 

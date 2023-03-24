@@ -138,6 +138,10 @@ const Conformpage = () => {
     ////////////////////////////////////////////////////////////////////////////////////////
 
     const userBookingdata = JSON.parse(localStorage.getItem("userBookingdata"));
+    console.log(
+      "userBookingdata.msg.length > 10 :>> ",
+      userBookingdata.msg.length
+    );
     setuserBookingdata(userBookingdata);
     const dbRef = ref(dbs, "cardata");
     onValue(dbRef, (snapshot) => {
@@ -221,7 +225,7 @@ const Conformpage = () => {
         // SuccessToast("Booking Done Successfully 👍");
         // setopenCheckbox(false);
         // setEmailError("");
-
+        //       =================================================== importent=============================================
         emailjs
           .send(
             "service_xu450yj",
@@ -254,6 +258,7 @@ const Conformpage = () => {
               console.log("error.text :>> ", error.text);
             }
           );
+        //       =================================================== importent=============================================
 
         swal({
           title: "Success!",
@@ -433,7 +438,7 @@ const Conformpage = () => {
                     Other Details
                   </Col>
                   <Col lg="1">:</Col>
-                  <Col lg="7" className="textans otherdetails">
+                  <Col lg="7" className={"textans otherdetails"}>
                     {userBookingdata?.msg}
                   </Col>
                 </Row>
@@ -472,10 +477,19 @@ const Conformpage = () => {
         centered
         size="lg"
         isOpen={modal}
-        toggle={() => setModal(!modal)}
+        toggle={() => {
+          setModal(!modal);
+          navigate("/home");
+        }}
         style={{ width: "40%" }}
       >
-        <ModalHeader toggle={() => setModal(!modal)} className="pe-5 mt-1">
+        <ModalHeader
+          toggle={() => {
+            setModal(!modal);
+            navigate("/home");
+          }}
+          className="pe-5 mt-1"
+        >
           <h1 className="titles">Rate This Car</h1>
         </ModalHeader>
         <ModalBody className="modalbody">

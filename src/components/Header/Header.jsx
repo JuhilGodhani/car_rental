@@ -511,12 +511,12 @@ const Header = (props) => {
             </div>
 
             <div className="nav_right">
-              <div className="search_box">
+              {/* <div className="search_box">
                 <input type="text" placeholder="Search" />
                 <span>
                   <i className="ri-search-line"></i>
                 </span>
-              </div>
+              </div> */}
             </div>
           </div>
         </Container>

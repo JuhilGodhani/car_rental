@@ -216,3 +216,7 @@
     height: 200px;
     width: 200px;
 }
+.selectitem{
+	height: 50px;
+	border-radius: 20px !important;
+}

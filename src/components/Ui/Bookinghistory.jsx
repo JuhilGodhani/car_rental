@@ -24,6 +24,10 @@ import {
   Input,
   ModalFooter,
 } from "reactstrap";
+import FormControl from "@mui/material/FormControl";
+import MenuItem from "@mui/material/MenuItem";
+import InputLabel from "@mui/material/InputLabel";
+import Select from "@mui/material/Select";
 import { width } from "@mui/system";
 import img from "../../../src/assests/all-images/no data found.jpg";
 
@@ -34,6 +38,8 @@ const Bookinghistory = () => {
   const [Query, setQuery] = useState("");
   const [modal, setModal] = useState(false);
   const [Opendata, setOpendata] = useState([]);
+  const [usersele, setUsersele] = useState("");
+  const [cardata, setcardata] = useState([]);
 
   const opensearch = () => {
     setSearch(true);
@@ -75,6 +81,43 @@ const Bookinghistory = () => {
     // this.setState({ query: getsearch });
   };
 
+  const handleSele = async (event) => {
+    let name = event.target.name;
+    let value = event.target.value;
+    // console.log(value);
+
+    setUsersele(value);
+
+    if (value === "Pending") {
+      const scartype = await cardata.filter((row) => {
+        if (row.data.status === "Pending") {
+          return row;
+        }
+      });
+      setTabledata(scartype);
+    } else if (value === "Completed") {
+      const scartype = await cardata.filter((row) => {
+        if (row.data.status === "Completed") {
+          return row;
+        }
+      });
+      setTabledata(scartype);
+    } else if (value === "Process") {
+      const scartype = await cardata.filter((row) => {
+        if (row.data.status === "Process") {
+          return row;
+        }
+      });
+      setTabledata(scartype);
+    } else if (value === "Alldata") {
+      const scartype = await cardata.filter((row) => {
+        setUsersele(null);
+        return row;
+      });
+      setTabledata(scartype);
+    }
+  };
+
   const opendata = (row) => {
     console.log("row241", row.data);
     setModal(true);
@@ -99,6 +142,7 @@ const Bookinghistory = () => {
       });
       setTabledata(data);
       setFilterdatas(data);
+      setcardata(data);
     });
   }, []);
 
@@ -111,22 +155,58 @@ const Bookinghistory = () => {
               <h3>My Booking History</h3>
 
               {Search === true ? (
-                <div className="form-input">
-                  <input
-                    type="search"
-                    placeholder="Search..."
-                    value={Query}
-                    onChange={(e) => {
-                      // this.setState({ query: e.target.value });
-                      hendalsearch(e);
-                    }}
-                  />
-                  <button type="submit" className="search-btn">
-                    <i className="bx">
-                      <BiSearchAlt />
-                    </i>
-                  </button>
-                </div>
+                <Row
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Col>
+                    <FormControl
+                      className="selectitem"
+                      style={{ width: "100%" }}
+                    >
+                      <InputLabel
+                        id="demo-simple-select-helper-label"
+                        style={{ color: "var(--dark)" }}
+                      >
+                        Status
+                      </InputLabel>
+                      <Select
+                        className="selectitem cartype"
+                        value={usersele}
+                        name="status"
+                        label="status"
+                        onChange={handleSele}
+                        style={{ padding: 27, color: "var(--dark)" }}
+                      >
+                        <MenuItem value="Alldata">None</MenuItem>
+                        <MenuItem value="Pending">Pending</MenuItem>
+                        <MenuItem value="Completed">Completed</MenuItem>
+                        <MenuItem value="Process">Process</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Col>
+                  <Col>
+                    <div className="form-input">
+                      <input
+                        type="search"
+                        placeholder="Search..."
+                        value={Query}
+                        onChange={(e) => {
+                          // this.setState({ query: e.target.value });
+                          hendalsearch(e);
+                        }}
+                      />
+                      <button type="submit" className="search-btn">
+                        <i className="bx">
+                          <BiSearchAlt />
+                        </i>
+                      </button>
+                    </div>
+                  </Col>
+                </Row>
               ) : (
                 <i className="bx bx1" onClick={opensearch}>
                   <BiSearchAlt />

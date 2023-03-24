@@ -84,6 +84,7 @@ const CarListing = () => {
       // localStorage.setItem("cartype", "PickupTrucks");
       setcars(PickupTruckscars);
     } else if (usersele === "AllCar") {
+      setUsersele(null);
       setcars(Cardata);
     }
   };
@@ -176,7 +177,7 @@ const CarListing = () => {
                     name="cartype"
                     onChange={handleSele}
                   >
-                    <MenuItem value="AllCar">All Car</MenuItem>
+                    <MenuItem value="AllCar">All Cars</MenuItem>
                     <MenuItem value="Sedan">Sedan</MenuItem>
                     <MenuItem value="SUV">SUV</MenuItem>
                     <MenuItem value="Coupe">Coupe</MenuItem>
