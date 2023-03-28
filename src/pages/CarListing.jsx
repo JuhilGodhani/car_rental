@@ -9,7 +9,7 @@ import Button from "@mui/material/Button";
 import "../style/carlisting.css";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { Select, MenuItem } from "@material-ui/core";
-
+import Box from '@mui/material/Box';
 import { Form, FormGroup } from "reactstrap";
 import { FormControl, InputLabel, OutlinedInput } from "@mui/material";
 import { dbs } from "../components/userfirebase/userfirebase";
@@ -22,6 +22,7 @@ import {
   remove,
   child,
 } from "firebase/database";
+import { async } from "q";
 
 const CarListing = () => {
   const [usersele, setUsersele] = useState("");
@@ -29,67 +30,96 @@ const CarListing = () => {
   const [cars, setcars] = useState([]);
   const [Arr, setArr] = useState(CarData);
 
-  const handleSele = (event) => {
+  const handleSele = async (event) => {
     let name = event.target.name;
     let value = event.target.value;
-    // console.log(value);
 
     setUsersele(value);
+    if (value === "Sedan") {
+      const scartype = await Cardata.filter((row) => {
+        if (row.data.cartype === "Sedan") {
+          return row;
+        }
+      });
+      setcars(scartype);
+    } else if (value === "SUV") {
+      const scartype = await Cardata.filter((row) => {
+        if (row.data.cartype === "SUV") {
+          return row;
+        }
+      });
+      setcars(scartype);
+    } else if (value === "Coupe") {
+      const scartype = await Cardata.filter((row) => {
+        if (row.data.cartype === "Coupe") {
+          return row;
+        }
+      });
+      setcars(scartype);
+    } else if (value === "PickupTrucks") {
+      const scartype = await Cardata.filter((row) => {
+        if (row.data.cartype === "PickupTrucks") {
+          return row;
+        }
+      });
+      setcars(scartype);
+    } else if (value === "none") {
+      const scartype = await Cardata.filter((row) => {
+        // setUsersele(null);
+        return row;
+      });
+      setcars(scartype);
+    }
   };
-  console.log("usersele", usersele);
+
   const Search = (e) => {
     e.preventDefault();
     if (usersele === "Sedan") {
-      // setArr(ACcarData);
-      // setCardata(Arr);
 
-      // console.log("Cardata :>> ", Cardata);
 
       const Sedancars = Cardata.filter((row) => {
         if (row.data.cartype === "Sedan") {
           return row;
-          // console.log("cars", row);
+
         }
       });
-      // localStorage.setItem("cartype", "Sedan");
+
       setcars(Sedancars);
     } else if (usersele === "SUV") {
       const SUVcars = Cardata.filter((row) => {
         if (row.data.cartype === "SUV") {
           return row;
-          // console.log("cars", row);
+
         }
       });
-      // setCardata(Arr);
-      // localStorage.setItem("cartype", "SUV");
+
       setcars(SUVcars);
     } else if (usersele === "Coupe") {
       const Coupecars = Cardata.filter((row) => {
         if (row.data.cartype === "Coupe") {
           return row;
-          // console.log("cars", row);
+
         }
       });
-      // setCardata(Arr);
-      // localStorage.setItem("cartype", "Coupe");
+
       setcars(Coupecars);
     } else if (usersele === "PickupTrucks") {
       const PickupTruckscars = Cardata.filter((row) => {
         if (row.data.cartype === "PickupTrucks") {
           return row;
-          // console.log("cars", row);
+
         }
       });
-      // setCardata(Arr);
-      // localStorage.setItem("cartype", "PickupTrucks");
+
       setcars(PickupTruckscars);
     } else if (usersele === "AllCar") {
       setcars(Cardata);
     }
   };
 
-  let a = JSON.parse(localStorage.getItem("Journey-Details"));
 
+
+  let a = JSON.parse(localStorage.getItem("Journey-Details"));
   useEffect(() => {
     const dbRef = ref(dbs, "cardata");
     onValue(dbRef, (snapshot) => {
@@ -102,55 +132,39 @@ const CarListing = () => {
       setCardata(records);
       setcars(records);
       if (a.cartype === "Sedan") {
-        // console.log("a.cartype :>> ", a.cartype);
-        // console.log("a.cartype :>> ", a.cartype);
         const Sedancars = records.filter((row) => {
           if (row.data.cartype === a.cartype) {
             return row;
-            // console.log("cars", row);
           }
         });
         setUsersele(a.cartype);
         setcars(Sedancars);
-        // localStorage.setItem("cartype", a.cartype);
       } else if (a.cartype === "SUV") {
-        // localStorage.setItem("cartype", "AC Car");
         const Sedancars = records.filter((row) => {
           if (row.data.cartype === a.cartype) {
             return row;
-            // console.log("cars", row);
           }
         });
-        // setUsersele("SUV");
         setUsersele(a.cartype);
         setcars(Sedancars);
       } else if (a.cartype === "Coupe") {
-        // localStorage.setItem("cartype", "AC Car");
         const Sedancars = records.filter((row) => {
           if (row.data.cartype === a.cartype) {
             return row;
-            // console.log("cars", row);
           }
         });
-        // setUsersele("SUV");
         setUsersele(a.cartype);
         setcars(Sedancars);
       } else if (a.cartype === "PickupTrucks") {
-        // localStorage.setItem("cartype", "AC Car");
         const Sedancars = records.filter((row) => {
           if (row.data.cartype === a.cartype) {
             return row;
-            // console.log("cars", row);
           }
         });
-        // setUsersele("SUV");
         setUsersele(a.cartype);
         setcars(Sedancars);
       }
     });
-
-    // setUsersele(a.cartype);/
-    // setArr(ACcarData);
   }, []);
 
   console.log("usersele", usersele);
@@ -161,7 +175,7 @@ const CarListing = () => {
       <section>
         <Container>
           <Row>
-            <ValidatorForm onSubmit={Search}>
+            {/* <ValidatorForm onSubmit={Search}>
               <Row className="d-flex align-items-center">
                 <Col lg="2">
                   <TextValidator
@@ -182,42 +196,46 @@ const CarListing = () => {
                     <MenuItem value="Coupe">Coupe</MenuItem>
                     <MenuItem value="PickupTrucks">Pickup Trucks</MenuItem>
                   </TextValidator>
-                  {/* <FormControl
-                    sx={{ m: 1, width: 300 }}
-                    className="col-md-8"
-                    style={{ width: "250px" }}
-                  >
-                    <InputLabel id="demo-multiple-name-label">
-                      AC or Non-AC
-                    </InputLabel>
-                    <Select
-                      labelId="demo-multiple-name-label"
-                      id="demo-multiple-name"
-                      value={usersele}
-                      name="ACNonAc"
-                      onChange={handleSele}
-                      input={<OutlinedInput label="AC or Non-AC" />}
-                      // MenuProps={MenuProps}
-                    >
-                      <MenuItem value="AC Car">AC Car</MenuItem>
-                      <MenuItem value="Non-AC Car">Non-AC Car</MenuItem>
-                    </Select>
-                  </FormControl> */}
-                  {/* <FormGroup className="select_group">
-                    <select className="selects" onClick={sel}>
-                      <option value="ac">AC car</option>
-                      <option value="non-ac">Non-AC car</option>
-                    </select>
-                  </FormGroup> */}
+                
+                 
                 </Col>
                 <Col lg="3">
                   <Button className="search_btn btn" type="submit">
                     <span className="reqacall">Search</span>
                   </Button>
-                  {/* <botton>Search</botton> */}
+               
                 </Col>
               </Row>
-            </ValidatorForm>
+            </ValidatorForm> */}
+            <Col>
+           
+              <FormControl 
+               className="selectitem" 
+               style={{ width: "10%",borderRadius:'10px',height:'80px' }}
+              >
+                <InputLabel  style={{ color: "var(--dark)",marginTop:'-40px',fontWeight:'200',fontSize:"25px" }}
+                >
+                  Car Type
+                </InputLabel>
+                <Select
+             
+
+                  className="selectitem cartype"
+                  value={usersele}
+                  name="cartype"
+                  label="Cartype"
+                  onChange={handleSele}
+                  style={{ padding: 27, color: "var(--dark)", height: '10px', marginTop: '10px', }}
+                >
+                  <MenuItem value="none">None of these</MenuItem>
+                  <MenuItem value="Sedan">Sedan</MenuItem>
+                  <MenuItem value="SUV">SUV</MenuItem>
+                  <MenuItem value="Coupe">Coupe</MenuItem>
+                  <MenuItem value="PickupTrucks">Pickup Trucks</MenuItem>
+                </Select>
+              </FormControl>
+             
+            </Col>
             <Col lg="12">
               {a.journeydate !== "" && a.returndate !== "" ? (
                 <h3 className="findcartext">
@@ -231,14 +249,7 @@ const CarListing = () => {
               )}
 
               <div className="d-flex align-items-center gap-3 mb-5">
-                {/* <span className='d-flex align-items-center gap-2'>
-                  <i className="ri-sort-asc"></i>Sort By
-                </span> */}
-                {/* <select >
-                  <option>Select</option>
-                  <option value="low">Low to High</option>
-                  <option value="high">High to Low</option>
-                </select> */}
+
               </div>
             </Col>
 

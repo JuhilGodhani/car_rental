@@ -6,13 +6,14 @@ import "../../style/payment-method.css";
 import masterCard from "../../assests/all-images/master-card.jpg";
 import paypal from "../../assests/all-images/paypal.jpg";
 import { Container, Row, Col } from "reactstrap";
-import { FormControlLabel, Checkbox, Link } from "@material-ui/core";
+import { FormControlLabel, Checkbox, Link, TextField } from "@material-ui/core";
 import validator from "validator";
 import { async } from "@firebase/util";
 import { ErrorToast, SuccessToast } from "../../helper/Toast";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import FormHelperText from "@mui/material/FormHelperText";
+// import { Field} from '@material-ui/core'
 
 import {
   ref,
@@ -343,6 +344,15 @@ const BookingForm = () => {
 
   const submitHandler1 = async (event) => {
     // setopenCheckbox(true);
+    const phoneNumberInput = document.getElementById("phone-number");
+    phoneNumberInput.addEventListener("input", () => {
+      const phoneNumber = phoneNumberInput.value;
+      if (phoneNumber.length < 10) {
+        phoneNumberInput.setCustomValidity("Please enter a valid phone number with at least 10 digits.");
+      } else {
+        phoneNumberInput.setCustomValidity("");
+      }
+    });
     event.preventDefault();
     if (validate(userBookingdata)) {
       return;
@@ -498,7 +508,7 @@ const BookingForm = () => {
                         name="firstname"
                         onChange={postBookingData}
                         value={userBookingdata?.firstname}
-                        // required
+                      // required
                       ></Input>
                       {error?.firstname && (
                         <span className="text-danger pe-2">
@@ -515,7 +525,7 @@ const BookingForm = () => {
                         onChange={postBookingData}
                         value={userBookingdata?.lastname}
                         placeholder="Last Name"
-                        // required
+                      // required
                       />
                       {error?.lastname && (
                         <span className="text-danger pe-2">
@@ -544,12 +554,16 @@ const BookingForm = () => {
                   <Col lg="6">
                     <FormGroup>
                       <Input
-                        type="number"
+                        type="text"
                         name="phonenumber"
+                        id="phone-number"
+                        maxLength="10"
+                        pattern="\d{10}"
+                        
                         onChange={postBookingData}
                         value={userBookingdata?.phonenumber}
                         placeholder="Phone Number"
-                        // required
+                      // required
                       />
                       {error?.phonenumber && (
                         <span className="text-danger pe-2">
@@ -557,7 +571,10 @@ const BookingForm = () => {
                         </span>
                       )}
                     </FormGroup>
+                    {/* <input type="text" maxlength="10" pattern="\d{10}" title="Please enter exactly 10 digits" /> */}
+
                   </Col>
+                     
 
                   <Col lg="6">
                     <FormGroup>
@@ -570,7 +587,7 @@ const BookingForm = () => {
                           JourneyDetails?.deliverylocation
                         }
                         placeholder="Starting Location"
-                        // required
+                      // required
                       />
                       {error?.deliverylocation && (
                         <span className="text-danger pe-2">
@@ -590,7 +607,7 @@ const BookingForm = () => {
                           JourneyDetails?.pickuplocation
                         }
                         placeholder="Ending Location"
-                        // required
+                      // required
                       />
                       {error?.pickuplocation && (
                         <span className="text-danger pe-2">
@@ -887,7 +904,7 @@ const BookingForm = () => {
               size="lg"
               isOpen={modal}
               toggle={() => setModal(!modal)}
-              // style={{ width: "30%" }}
+            // style={{ width: "30%" }}
             >
               <ModalHeader
                 toggle={() => setModal(!modal)}
