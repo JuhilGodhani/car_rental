@@ -63,6 +63,7 @@ function App() {
     if (!lgtype) {
       localStorage.setItem("lgtype", "Login");
     }
+    // localStorage.setItem("carrating", "0");
   }, []);
   return (
     <>

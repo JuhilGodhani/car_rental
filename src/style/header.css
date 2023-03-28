@@ -327,7 +327,6 @@
 
     border-radius: 20px;
     padding: 10px;
-    height: 403px;
     width: 500px;
     /* margin-left: 0px; */
 
@@ -360,10 +359,23 @@
     /* margin-top: -80px; */
 }
 .probg{
+    filter: hue-rotate(30deg);;
     margin-top: -125px;
     /* background-color: white; */
-    padding: 10px;
+    /* padding: 5px; */
     border-radius: 45px;
+    /* font-size: 125px; */
+    /* height: 125px; */
+    width: 125px;
+    /* border: 5px solid #1e276b; */
+}
+.updatedproimg{
+    margin-top: -125px;
+    padding: 5px;
+    border-radius: 75px;
+    height: 125px;
+    width: 125px;
+    border: 2px solid #1e276b;
 }
 .profiledetails{
     background-color: #000c6b16;

@@ -26,6 +26,7 @@ const Blog = () => {
       });
       setBlogdata(records);
     });
+    localStorage.setItem("carrating", "0");
   }, []);
 
   return (

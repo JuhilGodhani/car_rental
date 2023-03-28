@@ -25,7 +25,7 @@ const data = {
 
 const Contact = () => {
   const [userContact, setContact] = useState(data);
-
+  const [Bookingid, setBookingid] = useState("");
   const [emailError, setEmailError] = useState(data);
   // const [emailError1, setEmailError1] = useState({
   //   yourName: "",
@@ -44,8 +44,18 @@ const Contact = () => {
   const currenttime = new Date().toLocaleTimeString();
 
   const getAllData = () => {
+    const dbRef = ref(dbs, "ContactDatas");
+    onValue(dbRef, (snapshot) => {
+      let records = [];
+      snapshot.forEach((childSnapShot) => {
+        let keyName = childSnapShot.key;
+        let data = childSnapShot.val();
+        records.push({ key: keyName, data: data });
+      });
+      setBookingid(records.length + 1);
+    });
     return {
-      id: currenttime,
+      id: Bookingid,
       data: {
         yourName: userContact.yourName,
         email: userContact.email,
@@ -135,6 +145,10 @@ const Contact = () => {
   };
 
   //=============================================================
+
+  useEffect(() => {
+    localStorage.setItem("carrating", "0");
+  }, []);
 
   const socialLinks = [
     {

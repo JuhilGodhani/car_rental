@@ -13,6 +13,7 @@ const Profile = () => {
 
   useEffect(() => {
     setActive("a");
+    localStorage.setItem("carrating", "0");
   }, []);
 
   return (
@@ -43,7 +44,16 @@ const Profile = () => {
           </ul>
         </div>
       </Col>
-      <Col lg="10" className="d-flex justify-content-center p-5 ">
+      <Col
+        lg="10"
+        style={{
+          padding: "3rem",
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "20px",
+          marginBottom: "-20px",
+        }}
+      >
         {isActive === "a" ? (
           <Subprofile />
         ) : isActive1 === "a" ? (

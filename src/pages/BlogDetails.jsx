@@ -11,6 +11,7 @@ const BlogDetails = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    localStorage.setItem("carrating", "0");
   }, [blog]);
 
   return (

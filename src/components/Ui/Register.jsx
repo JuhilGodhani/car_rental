@@ -36,6 +36,7 @@ const data = {
 
 const Register = (props) => {
   const [userRegidata, setRegidata] = useState(data);
+  const [Bookingid, setBookingid] = useState("");
   const navigate = useNavigate();
 
   // const { signUp } = useUserAuth();
@@ -52,13 +53,13 @@ const Register = (props) => {
 
   const getAllData = () => {
     return {
-      id: currenttime,
+      id: Bookingid,
       data: {
         firstname: userRegidata.firstname,
         lastname: userRegidata.lastname,
         email: userRegidata.email,
         userimg:
-          "https://firebasestorage.googleapis.com/v0/b/car-rent-website-7fa0c.appspot.com/o/images%2Fytrf.jpge27a91c1-e62f-49e1-aa7a-845adc7dec91?alt=media&token=62900931-ab9e-4db3-8d75-229857425c70",
+          "https://firebasestorage.googleapis.com/v0/b/car-rent-website-7fa0c.appspot.com/o/images%2F240_F_150404044_dXI2utvn6Y6PivTbWk9lbIDR0UhM4A5Y-removebg-preview.png2367790c-2791-48e7-bac5-283f1af18b5d?alt=media&token=b035e2a9-204b-4556-a05a-1ed3565e1a21",
         phonenumber: userRegidata.phonenumber,
         password: userRegidata.password,
         gender: userRegidata.gender,
@@ -185,6 +186,16 @@ const Register = (props) => {
   //==================================================================
 
   useEffect(() => {
+    const dbRef = ref(dbs, "UserRegisterData");
+    onValue(dbRef, (snapshot) => {
+      let records = [];
+      snapshot.forEach((childSnapShot) => {
+        let keyName = childSnapShot.key;
+        let data = childSnapShot.val();
+        records.push({ key: keyName, data: data });
+      });
+      setBookingid(records.length + 1);
+    });
     // setValue(localStorage.getItem("email"));
     ValidatorForm.addValidationRule("isPasswordMatch", (value) => {
       if (value !== userRegidata.password) {

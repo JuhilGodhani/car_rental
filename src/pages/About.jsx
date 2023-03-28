@@ -8,6 +8,9 @@ import driveImg from "../assests/all-images/drive.jpg";
 import OurMembers from "../components/Ui/OurMembers";
 import "../style/about.css";
 const About = () => {
+  useEffect(() => {
+    localStorage.setItem("carrating", "0");
+  }, []);
   return (
     // <Helmet title='About'>
     <>
