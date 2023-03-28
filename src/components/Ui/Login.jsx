@@ -240,13 +240,13 @@ const Login = () => {
               </button>
             </Col>
           </Row>
-          <hr />
+          {/* <hr />
           <Row
             className="mb-2"
             style={{ display: "flex", justifyContent: "center" }}
           >
             <GoogleButton className="googlebtn" onClick={handlegooglesignin} />
-          </Row>
+          </Row> */}
           <Link
             onClick={() => navigate(`/register`)}
             className="signinlink"
