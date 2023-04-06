@@ -49,10 +49,10 @@ const Bookinghistory = () => {
     const getsearch = e.target.value;
     // console.log("juhil", getsearch);
 
-    if (getsearch) {
-      // const getsearch = e.target.value;
-      const searchdata = Filterdatas.filter((item) => {
-        console.log("item", item);
+    let searchdata;
+    // if (usersele) {
+    if (usersele && getsearch) {
+      searchdata = Tabledata.filter((item) => {
         return (
           item.data.firstname.toLowerCase().includes(getsearch) ||
           item.data.lastname.toLowerCase().includes(getsearch) ||
@@ -72,14 +72,108 @@ const Bookinghistory = () => {
           //   item.data.time.toLowerCase().includes(getsearch)
         );
       });
-      setTabledata(searchdata);
-      // this.setState({ tableData: searchdata });
+      let searchdata1 = Filterdatas.filter((row) => {
+        if (
+          getsearch === row.data.firstname ||
+          getsearch === row.data.lastname ||
+          getsearch === row.data.orderno ||
+          getsearch === row.data.deliverylocation ||
+          getsearch === row.data.phonenumber ||
+          getsearch === row.data.deliverydate ||
+          getsearch === String(row.data.carprice) ||
+          getsearch === row.data.carname ||
+          getsearch === row.data.status ||
+          getsearch === row.data.date
+        ) {
+          return row;
+        }
+      });
+      setcardata(searchdata1);
+    } else if (!getsearch && usersele) {
+      console.log("getsearch khali :>> ");
+
+      setcardata(Filterdatas);
+      searchdata = Filterdatas.filter((row) => {
+        if (row.data.status === usersele) {
+          return row;
+        }
+      });
+    } else if (getsearch) {
+      searchdata = Filterdatas.filter((item) => {
+        return (
+          item.data.firstname.toLowerCase().includes(getsearch) ||
+          item.data.lastname.toLowerCase().includes(getsearch) ||
+          // item.data.email.toLowerCase().includes(getsearch) ||
+          item.data.phonenumber.toLowerCase().includes(getsearch) ||
+          item.data.deliverylocation.toLowerCase().includes(getsearch) ||
+          //   item.data.pickuplocation.toLowerCase().includes(getsearch) ||
+          //   item.data.checkboxclick.toLowerCase().includes(getsearch) ||
+          // item.data.radioValue.toLowerCase().includes(getsearch) ||
+          String(item?.data?.carprice)?.includes(getsearch) ||
+          item.data.deliverydate.toLowerCase().includes(getsearch) ||
+          item.data.carname.toLowerCase().includes(getsearch) ||
+          item.data.status.toLowerCase().includes(getsearch) ||
+          item.data.orderno.toLowerCase().includes(getsearch) ||
+          //   item.data.journeytime.toLowerCase().includes(getsearch) ||
+          item.data.date.toLowerCase().includes(getsearch)
+          //   item.data.time.toLowerCase().includes(getsearch)
+        );
+      });
+      setcardata(searchdata);
     } else {
-      setTabledata(Filterdatas);
-      // this.setState({ tableData: this.state.filterdatas });
+      searchdata = Filterdatas.filter((item) => {
+        return (
+          item.data.firstname.toLowerCase().includes(getsearch) ||
+          item.data.lastname.toLowerCase().includes(getsearch) ||
+          // item.data.email.toLowerCase().includes(getsearch) ||
+          item.data.phonenumber.toLowerCase().includes(getsearch) ||
+          item.data.deliverylocation.toLowerCase().includes(getsearch) ||
+          //   item.data.pickuplocation.toLowerCase().includes(getsearch) ||
+          //   item.data.checkboxclick.toLowerCase().includes(getsearch) ||
+          // item.data.radioValue.toLowerCase().includes(getsearch) ||
+          String(item?.data?.carprice)?.includes(getsearch) ||
+          item.data.deliverydate.toLowerCase().includes(getsearch) ||
+          item.data.carname.toLowerCase().includes(getsearch) ||
+          item.data.status.toLowerCase().includes(getsearch) ||
+          item.data.orderno.toLowerCase().includes(getsearch) ||
+          //   item.data.journeytime.toLowerCase().includes(getsearch) ||
+          item.data.date.toLowerCase().includes(getsearch)
+          //   item.data.time.toLowerCase().includes(getsearch)
+        );
+      });
     }
+    // } else {
+    //   if (getsearch) {
+    //     searchdata = Filterdatas.filter((item) => {
+    //       return (
+    //         item.data.firstname.toLowerCase().includes(getsearch) ||
+    //         item.data.lastname.toLowerCase().includes(getsearch) ||
+    //         // item.data.email.toLowerCase().includes(getsearch) ||
+    //         item.data.phonenumber.toLowerCase().includes(getsearch) ||
+    //         item.data.deliverylocation.toLowerCase().includes(getsearch) ||
+    //         //   item.data.pickuplocation.toLowerCase().includes(getsearch) ||
+    //         //   item.data.checkboxclick.toLowerCase().includes(getsearch) ||
+    //         // item.data.radioValue.toLowerCase().includes(getsearch) ||
+    //         String(item?.data?.carprice)?.includes(getsearch) ||
+    //         item.data.deliverydate.toLowerCase().includes(getsearch) ||
+    //         item.data.carname.toLowerCase().includes(getsearch) ||
+    //         item.data.status.toLowerCase().includes(getsearch) ||
+    //         item.data.orderno.toLowerCase().includes(getsearch) ||
+    //         //   item.data.journeytime.toLowerCase().includes(getsearch) ||
+    //         item.data.date.toLowerCase().includes(getsearch)
+    //         //   item.data.time.toLowerCase().includes(getsearch)
+    //       );
+    //     });
+    //     setcardata(searchdata);
+    //     // this.setState({ cardata: searchdata });
+    //   } else {
+    //     searchdata = Filterdatas.filter((row) => {
+    //       return row;
+    //     });
+    //   }
+    // }
+    setTabledata(searchdata);
     setQuery(getsearch);
-    // this.setState({ query: getsearch });
   };
 
   const handleSele = async (event) => {

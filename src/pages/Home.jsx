@@ -17,7 +17,7 @@ import BlogList from "../components/Ui/BlogList";
 import { BsCurrencyRupee } from "react-icons/bs";
 import KommunicateChat from "../components/Ui/KommunicateChat";
 import { dbs } from "../components/userfirebase/userfirebase";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import {
   ref,
   onValue,
@@ -31,7 +31,7 @@ import {
 const Home = () => {
   const [Cardata, setCardata] = useState([]);
   const [Blogdata, setBlogdata] = useState([]);
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   const setting = {
     fade: true,
@@ -80,6 +80,7 @@ const Home = () => {
         msg: "",
       })
     );
+    localStorage.setItem("carrating", "0");
   }, []);
 
   return (
@@ -221,7 +222,13 @@ const Home = () => {
               <Col lg="12" className="mb-5 text-center">
                 <h6 className="section_subtitle">Explore our bogs</h6>
                 <h2 className="section_title">Latest Blogs</h2>
-                <h4 onClick={()=>navigate("/blogs")} className='seeall' style={{float:"right",cursor:'pointer'}}>See all</h4>
+                <h4
+                  onClick={() => navigate("/blogs")}
+                  className="seeall"
+                  style={{ float: "right", cursor: "pointer" }}
+                >
+                  See all
+                </h4>
               </Col>
               {Blogdata.slice(0, 3).map((item) => (
                 <BlogList item={item} key={item.key} />

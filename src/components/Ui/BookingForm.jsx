@@ -23,6 +23,7 @@ import {
   update,
   remove,
   child,
+  push,
 } from "firebase/database";
 import { dbs } from "../userfirebase/userfirebase";
 import { useNavigate } from "react-router";
@@ -79,6 +80,11 @@ const BookingForm = () => {
   const [checkboxclick, setCheckboxclick] = useState("Unchecked");
   const [modal, setModal] = useState(false);
   const [Cardata, setCardata] = useState([]);
+  const [cardetail, setcardetail] = useState([]);
+  const [databasebookingdata, setdatabasebookingdata] = useState([]);
+  const [postbookingdata, setpostbookingdata] = useState([]);
+  const [startdate, setstartdate] = useState("");
+  const [returndate, setreturndate] = useState("");
   const [error, setError] = useState({});
   const [UserEmail, setUserEmail] = useState("");
   const [Random, setRandom] = useState(null);
@@ -214,6 +220,78 @@ const BookingForm = () => {
       //   console.log("caraname", location.state.props.item.key);
       // singleCaritem1();
     });
+
+    const dbRef2 = ref(dbs, "BookingData");
+    onValue(dbRef2, (snapshot) => {
+      let records = [];
+      snapshot.forEach((childSnapShot) => {
+        let keyName = childSnapShot.key;
+
+        let data = childSnapShot.val();
+        records.push({ key: keyName, data: data });
+      });
+      // setpostbookingdata(records);
+      setdatabasebookingdata(records);
+      let bookeddate = [];
+      records.filter((row) => {
+        if (
+          row.data.carname === caridname?.carname &&
+          row.data.carmodel === caridname?.carmodel
+        ) {
+          bookeddate.push({
+            startdate: row.data.deliverydate,
+            returndate: row.data.returndate,
+          });
+          // setstartdate(row.data.deliverydate);
+          // setreturndate(row.data.returndate);
+          console.log("ns row.data.carname", row.data.carname);
+          console.log("ns row.data.deliverydate", row.data.deliverydate);
+          console.log("ns row.data.returndate", row.data.returndate);
+          // let ns =
+          //   new Date(userBookingdata?.deliverydate) ||
+          //   new Date(JourneyDetails?.deliverydate);
+
+          // let ne =
+          //   new Date(userBookingdata?.returndate) ||
+          //   new Date(JourneyDetails?.returndate);
+          // let s = new Date(row.data.deliverydate);
+          // let e = new Date(row.data.returndate);
+          // if (
+          //   (s < ns < e && s < ne < e) ||
+          //   (s > ns && s < ne < e) ||
+          //   (s < ns < e && ne > e) ||
+          //   (s > ns < e && s < ne > e) ||
+          //   (s > ns < e && s === ne < e) ||
+          //   (s < ns === e && s < ne > e) ||
+          //   (s === ns < e && s < ne > e) ||
+          //   (s > ns < e && s < ne === e)
+          //   //=======================================================================
+          //   // (ns >= s && ne <= e) ||
+          //   // (ns < s && s < ne < e) ||
+          //   // (e > ns > s && ne > e) ||
+          //   // (ns < s && ne > e)
+          //   //=======================================================================
+          // ) {
+          //   return Swal.fire({
+          //     title: "Please choose other Date or Car",
+          //     text: "your selected car is already booked in this date",
+          //     icon: "warning",
+          //     button: "Ok",
+          //   }).then(() => {});
+          // } else if ((s > ns && s > ne) || (ns > e && ne > e)) {
+          //   return;
+          // } else {
+          //   return;
+          // }
+          //  else
+          // if ((ns < s && ne < s) || (ns > e && ne > e)) {
+          //   return console.log("call thai 6");
+          // }
+        }
+        console.log("ns bookeddate", bookeddate);
+        setpostbookingdata(bookeddate);
+      });
+    });
   }, []);
 
   const navigate = useNavigate();
@@ -343,39 +421,118 @@ const BookingForm = () => {
   // };
 
   const submitHandler1 = async (event) => {
+    event.preventDefault();
     // setopenCheckbox(true);
     const phoneNumberInput = document.getElementById("phone-number");
     phoneNumberInput.addEventListener("input", () => {
       const phoneNumber = phoneNumberInput.value;
       if (phoneNumber.length < 10) {
-        phoneNumberInput.setCustomValidity("Please enter a valid phone number with at least 10 digits.");
+        phoneNumberInput.setCustomValidity(
+          "Please enter a valid phone number with at least 10 digits."
+        );
       } else {
         phoneNumberInput.setCustomValidity("");
       }
     });
-    event.preventDefault();
+
     if (validate(userBookingdata)) {
       return;
     }
-    // if (vali(JourneyDetails)) {
-    //   return;
-    // }
-
-    // if (userBookingdata.deliverylocation === JourneyDetails?.deliverylocation) {
-    //   // err.deliverylocation = "";
-    //   return true;
-    // }
 
     if (checkboxclick === "Unchecked") {
       ErrorToast("Accept privacy policy!!!");
       return;
     }
 
+    postbookingdata.map((a, index) => {
+      console.log("first", a.startdate, a.returndate);
+      let ns =
+        new Date(userBookingdata?.deliverydate) ||
+        new Date(JourneyDetails?.deliverydate);
+
+      let ne =
+        new Date(userBookingdata?.returndate) ||
+        new Date(JourneyDetails?.returndate);
+      let s = new Date(a.startdate);
+      let e = new Date(a.returndate);
+      // if (s !== "" && e !== "") {
+      if (
+        (ns >= s && ne <= e) ||
+        (ns < s && s < ne && ne < e) ||
+        (e > ns && ns > s && ne > e) ||
+        (ns < s && ne > e) ||
+        (s > ns && s < ne && ne <= e) ||
+        (s > ns && s < ne && ne <= e) ||
+        (s > ns && s <= ne && ne < e) ||
+        (s < ns && ns <= e && ne > e) ||
+        (s <= ns && ns < e && ne > e)
+      ) {
+        return Swal.fire({
+          title: "Please choose other Date or Car",
+          text: "your selected car is already booked in this date",
+          icon: "warning",
+          button: "Ok",
+        }).then(() => {
+          console.log("ns b", ns >= s && ne <= e);
+          console.log("ns d", ns < s && s < ne && ne < e);
+          console.log("ns e", e > ns && ns > s && ne > e);
+          console.log("ns f", ns < s && ne > e);
+          console.log("ns ns", ns);
+          console.log("ns ne", ne);
+          console.log("ns s", s);
+          console.log("ns e", e);
+          setopenpyment(false);
+        });
+      }
+
+      if ((s > ns && s > ne) || (ns > e && ne > e)) {
+        console.log("ns d", ns < s && s < ne && ne < e);
+        console.log("ns e", e > ns && ns > s && ne > e);
+        console.log("ns f", ns < s && ne > e);
+        //
+        console.log("ns ns", ns);
+        console.log("ns ne", ne);
+        console.log("ns s", s);
+        console.log("ns e", e);
+        // setopenpyment(true);
+      }
+
+      if (ns > ne) {
+        return Swal.fire({
+          title: "Please choose proper Date",
+          // text: "your selected car is already booked in this date",
+          icon: "warning",
+          button: "Ok",
+        }).then(() => {
+          setopenpyment(false);
+        });
+      }
+      // } else {
+      //   setopenpyment(true);
+      // }
+    });
+
+    console.log("ju startdate", startdate);
+    console.log("ju returndate", returndate);
+
     // setRandom(random)
     const shortId = shortid.generate();
     const random = Math.floor(Math.random() * 100000) + 1;
+    //========================================================================
+    // const dbRef = ref(dbs, "BookingData");
+    // onValue(dbRef, (snapshot) => {
+    //   let records = [];
+    //   snapshot.forEach((childSnapShot) => {
+    //     let keyName = childSnapShot.key;
+    //     let data = childSnapShot.val();
+    //     records.push({ key: keyName, data: data });
+    //   });
+    //   console.log("records.length :>> ", records.length);
+    // });
+    //========================================================================
+
+    localStorage.setItem("randomnumber", databasebookingdata.length + 1);
     // setRandom(random);
-    localStorage.setItem("randomnumber", random);
     console.log("shortId :>> ", shortId);
     console.log("random :>> ", random);
     const randomId = uuidv4();
@@ -408,6 +565,7 @@ const BookingForm = () => {
       })
     );
     setopenpyment(true);
+
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: elements.getElement(CardElement),
@@ -492,6 +650,9 @@ const BookingForm = () => {
       returndate: JourneyDetails?.returndate || userBookingdata1?.returndate,
       msg: userBookingdata1?.msg,
     });
+    //=======================================================================
+
+    //=======================================================================
   }, []);
 
   // console.log("first", userBookingdata);
@@ -511,7 +672,7 @@ const BookingForm = () => {
                         name="firstname"
                         onChange={postBookingData}
                         value={userBookingdata?.firstname}
-                      // required
+                        // required
                       ></Input>
                       {error?.firstname && (
                         <span className="text-danger pe-2">
@@ -528,7 +689,7 @@ const BookingForm = () => {
                         onChange={postBookingData}
                         value={userBookingdata?.lastname}
                         placeholder="Last Name"
-                      // required
+                        // required
                       />
                       {error?.lastname && (
                         <span className="text-danger pe-2">
@@ -562,11 +723,10 @@ const BookingForm = () => {
                         id="phone-number"
                         maxLength="10"
                         pattern="\d{10}"
-                        
                         onChange={postBookingData}
                         value={userBookingdata?.phonenumber}
                         placeholder="Phone Number"
-                      // required
+                        // required
                       />
                       {error?.phonenumber && (
                         <span className="text-danger pe-2">
@@ -575,9 +735,7 @@ const BookingForm = () => {
                       )}
                     </FormGroup>
                     {/* <input type="text" maxlength="10" pattern="\d{10}" title="Please enter exactly 10 digits" /> */}
-
                   </Col>
-                     
 
                   <Col lg="6">
                     <FormGroup>
@@ -590,7 +748,7 @@ const BookingForm = () => {
                           JourneyDetails?.deliverylocation
                         }
                         placeholder="Starting Location"
-                      // required
+                        // required
                       />
                       {error?.deliverylocation && (
                         <span className="text-danger pe-2">
@@ -610,7 +768,7 @@ const BookingForm = () => {
                           JourneyDetails?.pickuplocation
                         }
                         placeholder="Ending Location"
-                      // required
+                        // required
                       />
                       {error?.pickuplocation && (
                         <span className="text-danger pe-2">
@@ -619,7 +777,18 @@ const BookingForm = () => {
                       )}
                     </FormGroup>
                   </Col>
-
+                  {/* <Col lg="6">
+                    <div class="col-md-2">
+                      Date: Start Date
+                      <input type="text" id="date_picker1" size="9" />
+                    </div>
+                  </Col>
+                  <Col lg="6">
+                    <div class="col-md-2">
+                      Date: End Date
+                      <input type="text" id="date_picker2" size="9" />
+                    </div>
+                  </Col> */}
                   <Col lg="6">
                     <FormGroup>
                       <Input
@@ -911,7 +1080,7 @@ const BookingForm = () => {
               size="lg"
               isOpen={modal}
               toggle={() => setModal(!modal)}
-            // style={{ width: "30%" }}
+              // style={{ width: "30%" }}
             >
               <ModalHeader
                 toggle={() => setModal(!modal)}

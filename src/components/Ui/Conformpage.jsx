@@ -41,6 +41,7 @@ const data = {
 
 const Conformpage = () => {
   const [Cardata, setCardata] = useState([]);
+  const [Editcarsatus, setEditcarsatus] = useState("");
   const [userBookingdata, setuserBookingdata] = useState([]);
   const [modal, setModal] = useState(false);
   const navigate = useNavigate();
@@ -168,7 +169,9 @@ const Conformpage = () => {
           return row;
         }
       });
+      // console.log("juhil data :>> ", data);
       setCardata(data[0]);
+      // setEditcarsatus(data[0]);
     });
   }, []);
 
@@ -202,7 +205,17 @@ const Conformpage = () => {
     };
   };
 
+  const getAllData2 = () => {
+    return {
+      id: Editcarsatus.key,
+      data: {
+        status: "Reserved",
+      },
+    };
+  };
+
   const confirm = () => {
+    // console.log("getAllData", getAllData);
     const from_name = "Harsh";
     const from_email = userBookingdata?.email;
     const message = `Thank you for booking car from our website your order id is ${userBookingdata?.orderno} `;
@@ -226,6 +239,7 @@ const Conformpage = () => {
     const address = "BookingData/" + record.id;
     // console.log("yourName----", userContact.yourName);
     get(child(dbref, address)).then((snapshot) => {
+      console.log("ju record", record);
       if (snapshot.exists()) {
         ErrorToast("Please enter all details...");
       } else {
@@ -300,6 +314,20 @@ const Conformpage = () => {
             checkboxclick: "",
           })
         );
+
+        //===================================================================================
+        // const dbref2 = ref(dbs);
+        // const record2 = getAllData2();
+        // // const record = getAllData();
+        // const address2 = "cardata/" + record2.id;
+
+        // get(child(dbref2, address2)).then((snapshot) => {
+        //   if (snapshot.exists()) {
+        //     update(ref(dbs, address2), record2.data);
+        //   } else {
+        //     ErrorToast("Please enter all details...");
+        //   }
+        // });
       }
     });
   };

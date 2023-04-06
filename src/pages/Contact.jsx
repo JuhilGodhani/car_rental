@@ -44,16 +44,6 @@ const Contact = () => {
   const currenttime = new Date().toLocaleTimeString();
 
   const getAllData = () => {
-    const dbRef = ref(dbs, "ContactDatas");
-    onValue(dbRef, (snapshot) => {
-      let records = [];
-      snapshot.forEach((childSnapShot) => {
-        let keyName = childSnapShot.key;
-        let data = childSnapShot.val();
-        records.push({ key: keyName, data: data });
-      });
-      setBookingid(records.length + 1);
-    });
     return {
       id: Bookingid,
       data: {
@@ -147,6 +137,17 @@ const Contact = () => {
   //=============================================================
 
   useEffect(() => {
+    const dbRef = ref(dbs, "ContactDatas");
+    onValue(dbRef, (snapshot) => {
+      let records = [];
+      snapshot.forEach((childSnapShot) => {
+        let keyName = childSnapShot.key;
+        let data = childSnapShot.val();
+        records.push({ key: keyName, data: data });
+      });
+      setBookingid(records.length + 1);
+    });
+
     localStorage.setItem("carrating", "0");
   }, []);
 

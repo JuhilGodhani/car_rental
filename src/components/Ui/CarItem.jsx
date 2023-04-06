@@ -54,6 +54,7 @@ const CarItem = (props) => {
                   JSON.stringify({
                     key: props.item.key,
                     carname: props.item.data.carname,
+                    carmodel: props.item.data.carmodel,
                     carimg: props.item.data.carimg,
                   })
                 );
@@ -77,6 +78,7 @@ const CarItem = (props) => {
                   JSON.stringify({
                     key: props.item.key,
                     carname: props.item.data.carname,
+                    carmodel: props.item.data.carmodel,
                     carimg: props.item.data.carimg,
                   })
                 );
